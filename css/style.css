@@ -9,7 +9,7 @@ body{
   width: 100%;
   height: 100%;
   color: #fff;
-  background: #333;
+  background: rgba(0,0,0,.6);
   position: absolute;
   top: 0;
   left: 0;
@@ -31,7 +31,7 @@ body{
 }
 
 .content > div {
-  padding: 15px 40px 30px;
+  padding: 15px 15px 15px;
   font-weight: 300;
   font-size: 1.15em;
 }
@@ -41,11 +41,6 @@ body{
   padding: 10px 0;
   line-height: 2em;
   text-align: justify;
-}
-
-.content .gotIt {
-  float: right;
-  display: block;
 }
 .box {
   overflow: hidden;
@@ -86,11 +81,15 @@ nav:hover {
   font-family: 'Happy Monkey', cursive;
 }
 .marvel {
-  font-size: .75em;
+  font-size: .65em;
+  padding-bottom: 0 !important;
 }
 .selected {
   opacity: 1;
 }
 .hidden {
   display: none;
+}
+#characterComparison {
+  padding: 1em;
 }
