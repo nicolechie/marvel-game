@@ -1,10 +1,11 @@
 html, body{
   min-height: 100%;
 }
+
 body{
   position: relative;
 }
-/*style for hidden modal*/
+
 .overlay {
   width: 100%;
   height: 100%;
@@ -42,27 +43,34 @@ body{
   line-height: 2em;
   text-align: justify;
 }
+
 .box {
   overflow: hidden;
   padding: 0 !important;
   opacity: .65;
 }
+
 .box:hover {
   cursor: pointer;
   opacity: 1;
 }
+
 #characters img {
   width: 100%;
 }
+
 nav {
   opacity: 0;
 }
+
 nav:hover {
   opacity:.9;
 }
+
 .yellow {
     color: #ffce55;
 }
+
 .content h2 {
   font-family: 'Bangers', cursive;
   font-size: 2.5em;
@@ -77,19 +85,24 @@ nav:hover {
   background: rgba(0,0,0,0.1);
   border-radius: 3px 3px 0 0;
 }
+
 .copy {
   font-family: 'Happy Monkey', cursive;
 }
+
 .marvel {
   font-size: .65em;
   padding-bottom: 0 !important;
 }
+
 .selected {
   opacity: 1;
 }
+
 .hidden {
   display: none;
 }
+
 #characterComparison {
   padding: 1em;
 }

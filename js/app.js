@@ -1,39 +1,47 @@
 $(document).ready(function() {
 	var characters = {};
 	var boxCount = 0;
-	$(document).on("click",".box", function() {
+	var character1;
+
+	$(document).on('click','.box', function() {
 	 	console.log(boxCount);
-		var characterId = $(this).attr("value");
+		var characterId = $(this).attr('value');
 		console.log(characterId);
       	showTotals(characterId);
 		compareTotals(characterId);
-		if (boxCount === 1) {
-		    $(".overlay").fadeIn(1000);
-		    $("a.gotIt").click(function() {
-  				$(".overlay").fadeOut(1000);
+
+		/*--- If this is the first character clicked ---*/
+		if (boxCount === 0) {
+			character1 = $(this);
+			character1.addClass('selected');
+			boxCount++;
+		}
+		
+		/*--- If this is the second character clicked ---*/
+		else if (boxCount === 1) {
+		    $('.overlay').fadeIn(1000);
+		    $('a.gotIt').click(function() {
+  				$('.overlay').fadeOut(1000);
   				$('#characterComparison').html('');
   				boxCount = 0;
+  				character1.removeClass('selected');
   			});
 		}
-		else {
-			$(this).toggleClass("selected");
-			boxCount++;
-      	}
 	});
 
 	$('.results').hide();
 	$('.directions').hide();
 
 	/*--- Display directions modal box ---*/
-	$(".what").click(function(){
+	$('.what').click(function(){
 		$('.results').hide();
 		$('.directions').show();
-    	$(".overlay").fadeIn(1000);
+    	$('.overlay').fadeIn(1000);
   	});
 
   	/*--- Hide directions modal box ---*/
-  	$("a.gotIt").click(function(){
-  		$(".overlay").fadeOut(1000);
+  	$('a.gotIt').click(function(){
+  		$('.overlay').fadeOut(1000);
   		$('.directions').fadeOut(1000);
   		$('#characterComparison').html('');
   	});
@@ -63,16 +71,15 @@ function showResults(results) {
 }    
 
 function compareTotals(characterId) {
-	if (characters[characterId].count > characters[$('#countOne').attr("value")].count) {
+	if (characters[characterId].count > characters[$('#countOne').attr('value')].count) {
 		$('#winner').html(characters[characterId].name + ' is the winner!');
 	}
-	else if (characters[characterId].count === characters[$('#countOne').attr("value")].count) {
+	else if (characters[characterId].count === characters[$('#countOne').attr('value')].count) {
 		$('#winner').html('It is a tie!');
 	}
 	else {
-		$('#winner').html(characters[$('#countOne').attr("value")].name + ' is the winner!');
+		$('#winner').html(characters[$('#countOne').attr('value')].name + ' is the winner!');
 	}
-	
 }
 
 function showTotals(characterId) {
@@ -89,10 +96,10 @@ function characterGetRequest() {
 	};
 
 	$.ajax({
-		url: "http://gateway.marvel.com/v1/public/characters",
+		url: 'http://gateway.marvel.com/v1/public/characters',
 		data: request,
-		dataType: "json",
-		type: "GET"
+		dataType: 'json',
+		type: 'GET'
 	})
 
 	.done(function(data){ //this waits for the ajax to return with a succesful promise object
@@ -112,10 +119,10 @@ function comicGetRequest(characterId) {
 	};
 	
 	$.ajax({
-		url: "http://gateway.marvel.com/v1/public/characters/" + characterId + "/comics",
+		url: 'http://gateway.marvel.com/v1/public/characters/' + characterId + '/comics',
 		data: request,
-		dataType: "json",
-		type: "GET"
+		dataType: 'json',
+		type: 'GET'
 	})
 		.done(function(data){
 			characters[characterId].count = data.data.total;
